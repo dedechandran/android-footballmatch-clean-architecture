@@ -1,0 +1,67 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+android {
+    def androidCore = rootProject.extensions.getByName("ext")
+    compileSdkVersion androidCore["androidTargetSdkVersion"]
+    defaultConfig {
+        applicationId androidCore["applicationId"]
+        minSdkVersion androidCore["androidMinSdkVersion"]
+        targetSdkVersion androidCore["androidTargetSdkVersion"]
+        versionCode androidCore["applicationVersionCode"]
+        versionName androidCore["applicationVersionName"]
+        testInstrumentationRunner androidCore["testInstrumentationRunner"]
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    def appModuleDependencies = rootProject.ext.presentationDependencies
+    def appTestModuleDependencies = rootProject.ext.presentationTestDependencies
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':data')
+    implementation project(':domain')
+    implementation appModuleDependencies.kotlinStdLib
+    implementation appModuleDependencies.androidXAppCompat
+    implementation appModuleDependencies.androidXCoreKtx
+    implementation appModuleDependencies.androidXConstraint
+    implementation appModuleDependencies.androidXRecyclerView
+    implementation appModuleDependencies.googleMaterial
+    implementation appModuleDependencies.dagger
+    implementation appModuleDependencies.daggerAndroid
+    implementation appModuleDependencies.androidXAppCompat
+    implementation appModuleDependencies.androidXConstraint
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    kapt appModuleDependencies.daggerAndroidProcessor
+    implementation appModuleDependencies.daggerAndroidSupport
+    kapt appModuleDependencies.daggerCompiler
+    implementation appModuleDependencies.glide
+    kapt appModuleDependencies.glideCompiler
+    implementation appModuleDependencies.reactiveXAndroid
+    implementation appModuleDependencies.reactiveXJava
+    implementation appModuleDependencies.retrofit2
+
+    testImplementation appTestModuleDependencies.jUnit
+    testImplementation appTestModuleDependencies.mockito
+    testImplementation appTestModuleDependencies.mockitoInline
+    testImplementation appTestModuleDependencies.mockitoKotlin
+    androidTestImplementation appTestModuleDependencies.androidXEspressoCore
+    androidTestImplementation appTestModuleDependencies.androidXEspressoIntent
+    androidTestImplementation appTestModuleDependencies.androidXExtCore
+    androidTestImplementation appTestModuleDependencies.androidXExtTruth
+    androidTestImplementation appTestModuleDependencies.androidXTest
+    androidTestImplementation appTestModuleDependencies.androidXTestRunner
+
+}

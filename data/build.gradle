@@ -1,0 +1,51 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+android {
+    def androidCore = rootProject.extensions.getByName("ext")
+    compileSdkVersion androidCore["androidTargetSdkVersion"]
+    defaultConfig {
+        minSdkVersion androidCore["androidMinSdkVersion"]
+        targetSdkVersion androidCore["androidTargetSdkVersion"]
+        versionCode androidCore["applicationVersionCode"]
+        versionName androidCore["applicationVersionName"]
+        testInstrumentationRunner androidCore["testInstrumentationRunner"]
+        buildConfigField "String","BASE_URL","\"https://www.thesportsdb.com/api/v1/json/1/\""
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    def dataModuleDependencies = rootProject.ext.dataDependencies
+    def dataTestModuleDependencies = rootProject.ext.dataTestDependencies
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':domain')
+    //
+    implementation dataModuleDependencies.kotlinStdLib
+    implementation dataModuleDependencies.dagger
+    kapt dataModuleDependencies.daggerCompiler
+    implementation dataModuleDependencies.reactiveXAndroid
+    implementation dataModuleDependencies.reactiveXJava
+    implementation dataModuleDependencies.retrofit2
+    implementation dataModuleDependencies.retrofit2Adapter
+    implementation dataModuleDependencies.retrofit2Converter
+    //
+    testImplementation dataTestModuleDependencies.jUnit
+    testImplementation dataTestModuleDependencies.mockito
+    testImplementation dataTestModuleDependencies.mockitoInline
+    testImplementation dataTestModuleDependencies.mockitoKotlin
+    androidTestImplementation dataTestModuleDependencies.androidXEspressoCore
+    androidTestImplementation dataTestModuleDependencies.androidXEspressoIntent
+    androidTestImplementation dataTestModuleDependencies.androidXExtCore
+    androidTestImplementation dataTestModuleDependencies.androidXExtTruth
+    androidTestImplementation dataTestModuleDependencies.androidXTest
+    androidTestImplementation dataTestModuleDependencies.androidXTestKtx
+    androidTestImplementation dataTestModuleDependencies.androidXTestRunner
+}

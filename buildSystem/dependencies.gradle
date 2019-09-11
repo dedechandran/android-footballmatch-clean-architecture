@@ -1,0 +1,134 @@
+allprojects {
+    repositories {
+        jcenter()
+        google()
+    }
+}
+
+ext {
+    //Application
+    applicationId = "com.example.footballmatch"
+    applicationTestId = "com.example.footballmatch.test"
+    applicationVersionCode = 1
+    applicationVersionName = "1.0"
+
+    //Android Core Dependencies
+    androidMinSdkVersion = 21
+    androidTargetSdkVersion = 28
+    kotlinVersion = "1.3.41"
+    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+    //AndroidX Dependencies
+    androidXVersion = "1.0.2"
+    androidXCardViewVersion = "1.0.0"
+    androidXConstraintVersion = "1.1.3"
+    androidXRecyclerViewVersion = "1.0.0"
+
+    //Google Material Design
+    googleAndroidMaterialVersion = "1.0.0-rc01"
+
+    //Third Party Libraries
+    daggerVersion = "2.24"
+    glideVersion = "4.9.0"
+    javaxInjectVersion = "1"
+    reactiveXJavaVersion = "2.2.9"
+    reactiveXAndroidVersion = "2.1.1"
+    retrofit2Version = "2.6.0"
+    shimmerVersion = "0.4.0"
+
+    //Test Library Dependencies
+    // Test libraries dependency
+    androidXTestCoreVersion = "1.1.0"
+    androidXTestCoreKtxVersion = "1.2.0"
+    androidXTestEspressoVersion = "3.1.1"
+    androidXTestExtVersion = "1.1.0"
+    androidXTestRunnerVersion = "1.1.1"
+    jUnitVersion = "4.12"
+    testRunnerVersion = "1.0.1"
+    mockitoVersion = "2.27.0"
+    mockitoKotlinVersion = "2.1.0"
+
+    presentationDependencies = [
+            //Android and Kotlin
+            // Android and Kotlin
+            kotlinStdLib          : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${kotlinVersion}",
+            androidXAppCompat     : "androidx.appcompat:appcompat:${androidXVersion}",
+            androidXCoreKtx       : "androidx.core:core-ktx:${androidXVersion}",
+            androidXCardView      : "androidx.cardview:cardview:${androidXCardViewVersion}",
+            androidXConstraint    : "androidx.constraintlayout:constraintlayout:${androidXConstraintVersion}",
+            androidXRecyclerView  : "androidx.recyclerview:recyclerview:${androidXRecyclerViewVersion}",
+            // Google
+            googleMaterial        : "com.google.android.material:material:${googleAndroidMaterialVersion}",
+            // Third party support libraries
+            dagger                : "com.google.dagger:dagger:${daggerVersion}",
+            daggerAndroid         : "com.google.dagger:dagger-android:${daggerVersion}",
+            daggerAndroidProcessor: "com.google.dagger:dagger-android-processor:${daggerVersion}",
+            daggerAndroidSupport  : "com.google.dagger:dagger-android-support:${daggerVersion}",
+            daggerCompiler        : "com.google.dagger:dagger-compiler:${daggerVersion}",
+            glide                 : "com.github.bumptech.glide:glide:${glideVersion}",
+            glideCompiler         : "com.github.bumptech.glide:compiler:${glideVersion}",
+            reactiveXAndroid      : "io.reactivex.rxjava2:rxandroid:${reactiveXAndroidVersion}",
+            reactiveXJava         : "io.reactivex.rxjava2:rxjava:${reactiveXJavaVersion}",
+            retrofit2             : "com.squareup.retrofit2:retrofit:${retrofit2Version}"
+    ]
+
+    presentationTestDependencies = [
+            // AndroidX Test
+            androidXEspressoCore  : "androidx.test.espresso:espresso-core:${androidXTestEspressoVersion}",
+            androidXEspressoIntent: "androidx.test.espresso:espresso-intents:${androidXTestEspressoVersion}",
+            androidXExtCore       : "androidx.test.ext:junit:${androidXTestExtVersion}",
+            androidXExtTruth      : "androidx.test.ext:truth:${androidXTestExtVersion}",
+            androidXTest          : "androidx.test:core:${androidXTestCoreVersion}",
+            androidXTestKtx       : "androidx.test:core-ktx:${androidXTestCoreKtxVersion}",
+            androidXTestRunner    : "androidx.test:runner:${androidXTestCoreVersion}",
+            // JUnit
+            jUnit                 : "junit:junit:${jUnitVersion}",
+            mockito               : "org.mockito:mockito-core:${mockitoVersion}",
+            mockitoInline         : "org.mockito:mockito-inline:${mockitoVersion}",
+            mockitoKotlin         : "com.nhaarman.mockitokotlin2:mockito-kotlin:${mockitoKotlinVersion}"
+    ]
+
+    dataDependencies = [
+            // Kotlin
+            kotlinStdLib      : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${kotlinVersion}",
+            // Third party support libraries
+            dagger            : "com.google.dagger:dagger:${daggerVersion}",
+            daggerCompiler    : "com.google.dagger:dagger-compiler:${daggerVersion}",
+            reactiveXAndroid  : "io.reactivex.rxjava2:rxandroid:${reactiveXAndroidVersion}",
+            reactiveXJava     : "io.reactivex.rxjava2:rxjava:${reactiveXJavaVersion}",
+            retrofit2         : "com.squareup.retrofit2:retrofit:${retrofit2Version}",
+            retrofit2Adapter  : "com.squareup.retrofit2:adapter-rxjava2:${retrofit2Version}",
+            retrofit2Converter: "com.squareup.retrofit2:converter-gson:${retrofit2Version}"
+    ]
+
+    dataTestDependencies = [
+            // AndroidX Test
+            androidXEspressoCore  : "androidx.test.espresso:espresso-core:${androidXTestEspressoVersion}",
+            androidXEspressoIntent: "androidx.test.espresso:espresso-intents:${androidXTestEspressoVersion}",
+            androidXExtCore       : "androidx.test.ext:junit:${androidXTestExtVersion}",
+            androidXExtTruth      : "androidx.test.ext:truth:${androidXTestExtVersion}",
+            androidXTest          : "androidx.test:core:${androidXTestCoreVersion}",
+            androidXTestKtx       : "androidx.test:core-ktx:${androidXTestCoreKtxVersion}",
+            androidXTestRunner    : "androidx.test:runner:${androidXTestCoreVersion}",
+            // JUnit
+            jUnit                 : "junit:junit:${jUnitVersion}",
+            mockito               : "org.mockito:mockito-core:${mockitoVersion}",
+            mockitoInline         : "org.mockito:mockito-inline:${mockitoVersion}",
+            mockitoKotlin         : "com.nhaarman.mockitokotlin2:mockito-kotlin:${mockitoKotlinVersion}"
+    ]
+
+    domainDependencies = [
+            // Kotlin
+            kotlinStdLib : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${kotlinVersion}",
+            // Third party support library
+            javaxInject  : "javax.inject:javax.inject:${javaxInjectVersion}",
+            reactiveXJava: "io.reactivex.rxjava2:rxjava:${reactiveXJavaVersion}"
+    ]
+
+    domainTestDependencies = [
+            jUnit        : "junit:junit:${jUnitVersion}",
+            mockito      : "org.mockito:mockito-core:${mockitoVersion}",
+            mockitoInline: "org.mockito:mockito-inline:${mockitoVersion}",
+            mockitoKotlin: "com.nhaarman.mockitokotlin2:mockito-kotlin:${mockitoKotlinVersion}"
+    ]
+}

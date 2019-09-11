@@ -1,0 +1,16 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+dependencies {
+    def domainModuleDependencies = rootProject.ext.domainDependencies
+    def domainTestModuleDependencies = rootProject.ext.domainTestDependencies
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //
+    implementation domainModuleDependencies.kotlinStdLib
+    implementation domainModuleDependencies.javaxInject
+    implementation domainModuleDependencies.reactiveXJava
+
+    testImplementation domainTestModuleDependencies.jUnit
+    testImplementation domainTestModuleDependencies.mockito
+    testImplementation domainTestModuleDependencies.mockitoInline
+    testImplementation domainTestModuleDependencies.mockitoKotlin
+}
